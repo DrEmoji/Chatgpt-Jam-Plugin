@@ -36,7 +36,6 @@ module.exports = function ({ dispatch, application }) {
 
   const handleMessage = async ({ message }) => {
     const msg = message.value[5]
-    console.log(msg);
     if (config.enabled && msg.includes(config.keyword)) {
       apimsg = await GetAIResponse(msg.replace(this.keyword,""));
       console.log(apimsg);
