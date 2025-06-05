@@ -37,7 +37,7 @@ module.exports = function ({ dispatch, application }) {
   const handleMessage = async ({ message }) => {
     const msg = message.value[5]
     if (config.enabled && msg.includes(config.keyword)) {
-      apimsg = await GetAIResponse(msg.replace(this.keyword,""));
+      apimsg = await GetAIResponse(msg.replace(config.keyword,""));
       console.log(apimsg);
       const room = dispatch.getState('room')
       dispatch.sendRemoteMessage(`<msg t="sys"><body action="pubMsg" r="${room}"><txt><![CDATA[${apimsg}%0]]></txt></body></msg>`)
